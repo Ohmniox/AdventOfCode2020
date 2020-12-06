@@ -7,7 +7,7 @@ namespace AdventOfCode2020.Puzzles.Day5
   {
     public static void Puzzle1()
     {
-      var inputs = System.IO.File.ReadAllLines("Puzzles/Day5/Input_Final.txt");
+      var inputs = InputHelper.ReadAllLines(InputFileType.Final);
       var highestSeatID = 1;
       var highestSeatCode = inputs[0];
       foreach (var input in inputs)
@@ -34,7 +34,7 @@ namespace AdventOfCode2020.Puzzles.Day5
 
     public static void Puzzle2()
     {
-      var inputs = System.IO.File.ReadAllLines("Puzzles/Day5/Input_Final.txt");
+      var inputs = InputHelper.ReadAllLines(InputFileType.Final);
       var AllSeats = Enumerable.Range(11, 840).ToList();
 
       foreach (var input in inputs)
