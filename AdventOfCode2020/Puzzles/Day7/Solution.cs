@@ -7,23 +7,26 @@ namespace AdventOfCode2020.Puzzles.Day7
 {
   public class Solution
   {
-    static Dictionary<string, List<Bag>> LuggageRules = new Dictionary<string, List<Bag>>();
+    private static readonly Dictionary<string, List<Bag>> LuggageRules = new Dictionary<string, List<Bag>>();
+
+    static Solution()
+    {
+      MapLuggageRules();
+    }
 
     public static void Puzzle1()
     {
-      MapLuggageRules();
       var count = LuggageRules.Where(x => ContainsBag(x.Value, "shiny gold")).Count();
       Console.WriteLine($"Count : {count}");
     }
 
     public static void Puzzle2()
     {
-      MapLuggageRules();
       var count = GetCount("shiny gold");
       Console.WriteLine($"Count : {count}");
     }
 
-    public static int GetCount(string bagName)
+    private static int GetCount(string bagName)
     {
       var subBags = LuggageRules[bagName];
       var sum = 0;
@@ -35,7 +38,7 @@ namespace AdventOfCode2020.Puzzles.Day7
     }
 
 
-    public static bool ContainsBag(List<Bag> currentBags, string checkBagName)
+    private static bool ContainsBag(List<Bag> currentBags, string checkBagName)
     {
       if (currentBags.FirstOrDefault(x => x.Name == checkBagName) != null)
       {
@@ -55,7 +58,7 @@ namespace AdventOfCode2020.Puzzles.Day7
       }
     }
 
-    public static void MapLuggageRules()
+    private static void MapLuggageRules()
     {
       var inputs = InputHelper.ReadAllLines(InputFileType.Final);
 
@@ -84,7 +87,7 @@ namespace AdventOfCode2020.Puzzles.Day7
       }
     }
 
-    public class Bag
+    private class Bag
     {
       public int Count { get; set; }
       public string Name { get; set; }
