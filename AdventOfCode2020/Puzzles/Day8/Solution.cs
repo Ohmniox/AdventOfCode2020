@@ -21,10 +21,10 @@ namespace AdventOfCode2020.Puzzles.Day8
       {
         var changedInputs = new string[inputs.Length];
         inputs.CopyTo(changedInputs, 0);
-        var instruction = inputs[i].Split(' ')[0];
+        var instruction = changedInputs[i].Split(' ')[0];
         if (instruction == "jmp" || instruction == "nop")
         {
-          changedInputs[i] = changedInputs[i].Replace(instruction == "jmp" ? "jmp" : "nop", instruction == "jmp" ? "nop" : "jmp");
+          changedInputs[i] = changedInputs[i].Replace(instruction, instruction == "jmp" ? "nop" : "jmp");
           if (ProgramLoopCompleted(changedInputs))
           {
             Console.WriteLine("Loop completed.");
